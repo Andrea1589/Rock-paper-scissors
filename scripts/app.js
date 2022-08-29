@@ -1,3 +1,6 @@
+//Start playing
+Play();
+
 //The participant choose one option (rock, paper or scissors) secretly
 function getComputerChoice(){
     let cChoice = undefined;
@@ -36,4 +39,34 @@ function getPlayerChoice() {
 function Play(){
     let playerSelection = getPlayerChoice();
     let computerSelection = getComputerChoice();
+    let resultMessage = undefined;
+
+    if (playerSelection === 'rock'){
+        if(computerSelection === 'paper') {
+            resultMessage = 'You Lose! Paper beats Rock';
+        } else if (computerSelection === 'scissors') {
+            resultMessage = 'You Win! Rock beats Scissors';
+        } else {
+            resultMessage = 'Your Even! Both chose Rock';
+        }
+    } else if (playerSelection === 'paper'){
+        if(computerSelection === 'rock') {
+            resultMessage = 'You Win! Paper beats Rock';
+        } else if (computerSelection === 'scissors') {
+            resultMessage = 'You Lose! Scissors beat Paper';
+        } else {
+            resultMessage = 'Your Even! Both chose Paper';
+        }
+    } else {
+        if(computerSelection === 'rock') {
+            resultMessage = 'You Lose! Rock beats Scissors';
+        } else if (computerSelection === 'paper') {
+            resultMessage = 'You Win! Scissors beat Paper';
+        } else {
+            resultMessage = 'Your Even! Both chose Scissors';
+        }
+    }
+
+    alert('Computer choice: ' + computerSelection + ' Your choice: ' + playerSelection + '. ' + resultMessage);
+
 }
