@@ -1,21 +1,21 @@
 //The participant choose one option (rock, paper or scissors) secretly
 function getComputerChoice(){
-    let computerChoice = undefined;
+    let cChoice = undefined;
     let numChoice = getRandomInt(3);
     console.log(numChoice);
     switch(numChoice){
         case 0: 
-            computerChoice = 'rock';
+            cChoice = 'rock';
             break;
         case 1: 
-            computerChoice = 'paper';
+            cChoice = 'paper';
             break;
         case 2: 
-            computerChoice = 'scissors';
+            cChoice = 'scissors';
             break;
     }
 
-    return computerChoice;
+    return cChoice;
 }
 
 function getRandomInt(max){
@@ -24,7 +24,7 @@ function getRandomInt(max){
 
 function playerChoice() {
     let pChoice = prompt('Enter your choice (rock, paper or scissors):');
-    console.log(pChoice);
+    //console.log(pChoice);
     return pChoice;
 }
 //At the same time the participant show their option to each other
