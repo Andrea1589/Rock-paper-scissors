@@ -22,7 +22,7 @@ function getRandomInt(max){
     return Math.floor(Math.random()*max);
 }
 
-function playerChoice() {
+function getPlayerChoice() {
     let pChoice = prompt('Enter your choice (rock, paper or scissors):');
     //console.log(pChoice);
     return pChoice;
@@ -32,3 +32,8 @@ function playerChoice() {
 //1- Scissors beats paper
 //2- Paper beats rock
 //3- Rock beats scissors
+
+function Play(){
+    let playerSelection = getPlayerChoice();
+    let computerSelection = getComputerChoice();
+}
