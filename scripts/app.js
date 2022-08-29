@@ -26,7 +26,7 @@ function getRandomInt(max){
 }
 
 function getPlayerChoice() {
-    let pChoice = prompt('Enter your choice (rock, paper or scissors):');
+    let pChoice = prompt('Enter your choice (rock, paper or scissors):').toLowerCase();
     //console.log(pChoice);
     return pChoice;
 }
