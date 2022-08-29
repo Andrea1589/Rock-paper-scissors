@@ -22,6 +22,11 @@ function getRandomInt(max){
     return Math.floor(Math.random()*max);
 }
 
+function playerChoice() {
+    let pChoice = prompt('Enter your choice (rock, paper or scissors):');
+    console.log(pChoice);
+    return pChoice;
+}
 //At the same time the participant show their option to each other
 //The participant who beats the other according the next description wins
 //1- Scissors beats paper
