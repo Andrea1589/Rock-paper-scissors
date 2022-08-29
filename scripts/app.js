@@ -1,5 +1,5 @@
 //Start playing
-Play();
+playRound(getPlayerChoice(),getComputerChoice());
 
 //The participant choose one option (rock, paper or scissors) secretly
 function getComputerChoice(){
@@ -36,9 +36,7 @@ function getPlayerChoice() {
 //2- Paper beats rock
 //3- Rock beats scissors
 
-function Play(){
-    let playerSelection = getPlayerChoice();
-    let computerSelection = getComputerChoice();
+function playRound(playerSelection, computerSelection){
     let resultMessage = undefined;
 
     if (playerSelection === 'rock'){
