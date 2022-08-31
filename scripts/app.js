@@ -1,6 +1,5 @@
 //Start playing
-playRound(getPlayerChoice(),getComputerChoice());
-
+    game();
 //The participant choose one option (rock, paper or scissors) secretly
 function getComputerChoice(){
     let cChoice = undefined;
@@ -65,6 +64,13 @@ function playRound(playerSelection, computerSelection){
         }
     }
 
-    alert('Computer choice: ' + computerSelection + ' Your choice: ' + playerSelection + '. ' + resultMessage);
+    console.log('Computer choice: ' + computerSelection + ' Your choice: ' + playerSelection + '. ' + resultMessage);
+    //alert('Computer choice: ' + computerSelection + ' Your choice: ' + playerSelection + '. ' + resultMessage);
 
+}
+
+function game(){
+    for(let i=0; i<=5; i++){
+        playRound(getPlayerChoice(),getComputerChoice());
+    }
 }
