@@ -1,10 +1,10 @@
 //Start playing
-    game();
+    game(5);
 //The participant choose one option (rock, paper or scissors) secretly
 function getComputerChoice(){
     let cChoice = undefined;
     let numChoice = getRandomInt(3);
-    console.log(numChoice);
+    //console.log(numChoice);
     switch(numChoice){
         case 0: 
             cChoice = 'rock';
@@ -24,11 +24,6 @@ function getRandomInt(max){
     return Math.floor(Math.random()*max);
 }
 
-function getPlayerChoice() {
-    let pChoice = prompt('Enter your choice (rock, paper or scissors):').toLowerCase();
-    //console.log(pChoice);
-    return pChoice;
-}
 //At the same time the participant show their option to each other
 //The participant who beats the other according the next description wins
 //1- Scissors beats paper
@@ -64,29 +59,32 @@ function playRound(playerSelection, computerSelection){
         }
     }
 
-    console.log('Computer choice: ' + computerSelection + ' Your choice: ' + playerSelection + '. ' + resultMessage);
-    //alert('Computer choice: ' + computerSelection + ' Your choice: ' + playerSelection + '. ' + resultMessage);
+    //console.log('Computer choice: ' + computerSelection + ' Your choice: ' + playerSelection + '. ' + resultMessage);
+    return resultMessage;
 
 }
 
-function game(){
-    document.body.addEventListener('click', event =>{
+function game(maxRounds){
+    let countRounds = 0;
+    let playerChoice = '';
+
+    //Add event listener on button options
+    document.body.addEventListener('click', function clickButton(event) {
         if (event.target.nodeName == 'BUTTON') {
-            let playerChoice = event.target.textContent.toLowerCase();
-            switch (playerChoice) {
-                case 'rock':
-                    playRound(getPlayerChoice(),getComputerChoice());
-                    break;
-                case 'paper':
-                    playRound(getPlayerChoice(),getComputerChoice());
-                    break;
-                case 'scissors':
-                    playRound(getPlayerChoice(),getComputerChoice());
-                    break;
+            countRounds += 1;
+            playerChoice = event.target.textContent.toLowerCase();
+            let result = playRound(playerChoice, getComputerChoice());
+
+            //Alter the DOM to show results
+            let content = document.querySelector('div');
+            const div = document.createElement('div');
+            div.textContent = 'Round ' + countRounds + ': ' + result;
+            content.appendChild(div);
+            
+            //Remove event listener when reach max number of rounds
+            if (countRounds == maxRounds) {
+                document.body.removeEventListener('click', clickButton);
             };
         };
     });
-    //for(let i=0; i<=5; i++){
-    //    playRound(getPlayerChoice(),getComputerChoice());
-    //}
 }
