@@ -30,8 +30,11 @@ function getRandomInt(max){
 //2- Paper beats rock
 //3- Rock beats scissors
 
-function playRound(playerSelection, computerSelection){
+function playRound(roundNumber, playerSelection, computerSelection){
     let resultMessage = undefined;
+
+    let content = document.querySelector('div');
+    const div = document.createElement('div');
 
     if (playerSelection === 'rock'){
         if(computerSelection === 'paper') {
@@ -59,6 +62,8 @@ function playRound(playerSelection, computerSelection){
         }
     }
 
+    div.textContent = 'Round ' + roundNumber + ': ' + resultMessage;
+    content.appendChild(div);
     //console.log('Computer choice: ' + computerSelection + ' Your choice: ' + playerSelection + '. ' + resultMessage);
     return resultMessage;
 
@@ -73,14 +78,8 @@ function game(maxRounds){
         if (event.target.nodeName == 'BUTTON') {
             countRounds += 1;
             playerChoice = event.target.textContent.toLowerCase();
-            let result = playRound(playerChoice, getComputerChoice());
-
-            //Alter the DOM to show results
-            let content = document.querySelector('div');
-            const div = document.createElement('div');
-            div.textContent = 'Round ' + countRounds + ': ' + result;
-            content.appendChild(div);
-            
+            let result = playRound(countRounds, playerChoice, getComputerChoice());
+           
             //Remove event listener when reach max number of rounds
             if (countRounds == maxRounds) {
                 document.body.removeEventListener('click', clickButton);
