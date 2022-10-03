@@ -70,7 +70,23 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(){
+    document.body.addEventListener('click', event =>{
+        if (event.target.nodeName == 'BUTTON') {
+            let playerChoice = event.target.textContent.toLowerCase();
+            switch (playerChoice) {
+                case 'rock':
+                    playRound(getPlayerChoice(),getComputerChoice());
+                    break;
+                case 'paper':
+                    playRound(getPlayerChoice(),getComputerChoice());
+                    break;
+                case 'scissors':
+                    playRound(getPlayerChoice(),getComputerChoice());
+                    break;
+            };
+        };
+    });
     //for(let i=0; i<=5; i++){
-        playRound(getPlayerChoice(),getComputerChoice());
+    //    playRound(getPlayerChoice(),getComputerChoice());
     //}
 }
