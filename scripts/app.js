@@ -92,9 +92,9 @@ function game(maxRounds){
             let result = playRound(countRounds, playerChoice, getComputerChoice());
 
             //Sum points
-            if (result == 'player') {
+            if (result === 'player') {
                 playerPoints += 1;
-            } else {
+            } else if (result === 'computer') {
                 computerPoints += 1;
             }
            
