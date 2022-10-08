@@ -50,26 +50,65 @@ body {
 
 .rock-left,
 .paper-left,
-.scissors-left {
-    color: #f9faf8;
-    background-color: #3882f6;
+.scissors-left,
+.rock-right,
+.paper-right,
+.scissors-right {
     background-size: cover;
+    border-width: 0;
+    margin: 5px;
     height: 100px;
     width: 250px;
     font-size: 1.5rem;
-    text-align: left;
+    align-self: center;
     font-weight: bolder;
-    border-radius: 2px;
+    border-radius: 8px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+button:hover{
+    opacity: 1;
 }
 
 .rock-left {
+    color: #ffdc00;
+    background-color: #ffdc00;
     background-image:url(./images/rock-left.png);
+    text-align: left;
 }
 
 .paper-left {
+    color: #883ff5;
+    background-color: #883ff5;
     background-image:url(./images/paper-left.png);
+    text-align: left;
 }
 
 .scissors-left {
+    color: #ff49da;
+    background-color: #ff49da;
     background-image:url(./images/scissors-left.png);
+    text-align: left;
+}
+
+.rock-right {
+    color: #ffdc00;
+    background-color: #ffdc00;
+    background-image:url(./images/rock-right.png);
+    text-align: right;
+}
+
+.paper-right {
+    color: #883ff5;
+    background-color: #883ff5;
+    background-image:url(./images/paper-right.png);
+    text-align: right;
+}
+
+.scissors-right {
+    color: #ff49da;
+    background-color: #ff49da;
+    background-image:url(./images/scissors-right.png);
+    text-align: right;
 }
