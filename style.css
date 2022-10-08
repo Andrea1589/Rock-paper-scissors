@@ -25,7 +25,7 @@ body {
     align-items: center;
     padding: 10px 250px;
     font-size: 13px;
-    background-color: #1f2937;
+    background-color: #4a7fca;
 }
 
 .game{
@@ -34,7 +34,42 @@ body {
     justify-content: center;
     padding: 20px 250px 20px 250px;
     gap: 25px;
-    color: #f9faf8;
-    background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='16.5' height='32.877' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(215, 28%, 17%, 1)'/><path d='M-5 2l5 10L5 2zm16.5 0l5 10 5-10zM8.25 4.438l-5 10h10zm-5 14l5 10.001 5-10zM0 20.878l-5 10H5zm16.5 0l-5 10h10z'  stroke-width='1' stroke='hsla(217, 91%, 59%, 1)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>")
+    color: black;
     
+}
+
+.messages{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 250px 20px 250px;
+    gap: 25px;
+    color: black;
+    
+}
+
+.rock-left,
+.paper-left,
+.scissors-left {
+    color: #f9faf8;
+    background-color: #3882f6;
+    background-size: cover;
+    height: 100px;
+    width: 250px;
+    font-size: 1.5rem;
+    text-align: left;
+    font-weight: bolder;
+    border-radius: 2px;
+}
+
+.rock-left {
+    background-image:url(./images/rock-left.png);
+}
+
+.paper-left {
+    background-image:url(./images/paper-left.png);
+}
+
+.scissors-left {
+    background-image:url(./images/scissors-left.png);
 }

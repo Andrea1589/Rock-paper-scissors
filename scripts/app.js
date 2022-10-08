@@ -89,6 +89,7 @@ function game(maxRounds){
         if (event.target.nodeName == 'BUTTON') {
             countRounds += 1;
             playerChoice = event.target.textContent.toLowerCase();
+            //console.log('Choice: ' + playerChoice);
             let result = playRound(countRounds, playerChoice, getComputerChoice());
 
             //Sum points

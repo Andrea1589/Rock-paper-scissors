@@ -10,23 +10,29 @@
 <body>
     <div class="header">
         <h1>Welcome to Rock, Paper Scissors!</h1>
-        <button>Start</button>
+        <!--<button>Start</button>-->
     </div>
     <div class="game">
-        <div class="player">
+        <div>
             <img src="./images/user.png" height="450px" alt="Person shadow">
-            <p class="player-user">You</p>
-            <button><img src="./images/rock-left.png" height="100px" alt="Rock"></button>
-            <button><img src="./images/paper-left.png" height="100px" alt="Paper"></button>
-            <button><img src="./images/scissors-left.png" height="100px" alt="Scissors"></button>
+        </div>
+        <div>
+            <h3>You</h3>
+            <button class="rock-left">ROCK</button>
+            <button class="paper-left">PAPER</button>
+            <button class="scissors-left">SCISSORS</button>
+        </div>
+        <div>
         </div>        
-        <div class="computer">
-            <img src="./images/computer.png" height="250px">
-            <p class="player-computer">Computer</p>
+        <div>
+            <h3>Computer</h3>
             <button><img src="./images/rock-right.png" height="100px" alt="Rock"></button>
             <button><img src="./images/paper-right.png" height="100px" alt="Paper"></button>
             <button><img src="./images/scissors-right.png" height="100px" alt="Scissors"></button>
         </div>        
+        <div>
+            <img src="./images/computer.png" height="250px">
+        </div>
     </div>
     <div class="messages">
         <div id="rounds"></div>
