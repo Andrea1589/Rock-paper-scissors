@@ -29,6 +29,26 @@ body {
     color: #883ff5;
 }
 
+ul{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 16px;
+}
+
+a{
+    text-decoration: none;
+    color: #ff49da;
+    padding: 5px 15px;
+    border-radius: 6px;
+}
+
+a:hover{
+    background: #ff49da;
+    color: #ffdc00;
+}
+
 .game{
     display: flex;
     align-items:center;
