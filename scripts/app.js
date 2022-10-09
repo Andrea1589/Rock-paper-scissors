@@ -37,7 +37,8 @@ function playRound(roundNumber, playerSelection, computerSelection){
     let winner = '';
 
     let content = document.getElementById('rounds');
-    const div = document.createElement('div');
+    const div1 = document.createElement('div');
+    const div2 = document.createElement('div');
 
     if (playerSelection === 'rock'){
         if(computerSelection === 'paper') {
@@ -74,8 +75,20 @@ function playRound(roundNumber, playerSelection, computerSelection){
         }
     }
 
-    div.textContent = 'Round ' + roundNumber + ': ' + resultMessage;
-    content.appendChild(div);
+    div1.textContent = 'Round ' + roundNumber;
+    content.appendChild(div1);
+
+    const playerImg = document.createElement('img');
+    playerImg.setAttribute('class', playerSelection + '-left');
+    content.appendChild(playerImg);
+
+    const computerImg = document.createElement('img');
+    computerImg.setAttribute('class', computerSelection + '-left');
+    content.appendChild(computerImg);
+
+
+    div2.textContent = resultMessage;
+    content.appendChild(div2);
     //console.log('Computer choice: ' + computerSelection + ' Your choice: ' + playerSelection + '. ' + resultMessage);
     return winner;
 }
