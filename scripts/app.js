@@ -1,5 +1,6 @@
 //Start playing
     game(5);
+
 //The participant choose one option (rock, paper or scissors) secretly
 function getComputerChoice(){
     let cChoice = undefined;
@@ -17,6 +18,7 @@ function getComputerChoice(){
             break;
     }
 
+    //console.log(img);
     return cChoice;
 }
 

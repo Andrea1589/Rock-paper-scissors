@@ -25,12 +25,13 @@ body {
     align-items: center;
     padding: 10px 250px;
     font-size: 13px;
-    background-color: #4a7fca;
+    background-color: #ffdc00;
+    color: #883ff5;
 }
 
 .game{
     display: flex;
-    align-items: center;
+    align-items:center;
     justify-content: center;
     padding: 20px 250px 20px 250px;
     gap: 25px;
@@ -51,9 +52,9 @@ body {
 .rock-left,
 .paper-left,
 .scissors-left,
-.rock-right,
-.paper-right,
-.scissors-right {
+#rock-right,
+#paper-right,
+#scissors-right {
     background-size: cover;
     border-width: 0;
     margin: 5px;
@@ -62,8 +63,8 @@ body {
     font-size: 1.5rem;
     align-self: center;
     font-weight: bolder;
-    border-radius: 8px;
-    opacity: 0.6;
+    border-radius: 6px;
+    opacity: 0.4;
     transition: 0.3s;
 }
 
@@ -92,23 +93,41 @@ button:hover{
     text-align: left;
 }
 
-.rock-right {
-    color: #ffdc00;
-    background-color: #ffdc00;
-    background-image:url(./images/rock-right.png);
+#rock-right {
+    color: gray;
+    background-color: gray;
     text-align: right;
 }
 
-.paper-right {
-    color: #883ff5;
+#paper-right {
+    color: gray;
+    background-color: gray;
+    text-align: right;
+}
+
+#scissors-right {
+    color: gray;
+    background-color: gray;
+    text-align: right;
+}
+
+.messages{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 20px 20px;
+    margin: 40px 250px;
+    font-size: 15px;
+    gap: 60px;
+}
+
+.footer{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 250px;
     background-color: #883ff5;
-    background-image:url(./images/paper-right.png);
-    text-align: right;
-}
-
-.scissors-right {
-    color: #ff49da;
-    background-color: #ff49da;
-    background-image:url(./images/scissors-right.png);
-    text-align: right;
+    font-size: 13px;
+    color: #f9faf8;
 }
