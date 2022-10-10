@@ -51,20 +51,17 @@ a:hover{
 
 .game{
     display: flex;
-    align-items:center;
-    justify-content: center;
-    padding: 20px 250px 20px 250px;
-    gap: 25px;
+    align-items:flex-start;
+    justify-content:center;
+    padding: 10px 250px 10px 250px;
     color: black;
     
 }
 
-.messages{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 250px 20px 250px;
-    gap: 25px;
+#messages{
+    width: 100%;
+    max-width: 400px;
+    padding: 30px 50px;
     color: black;
     
 }
@@ -72,9 +69,9 @@ a:hover{
 .rock-left,
 .paper-left,
 .scissors-left,
-#rock-right,
-#paper-right,
-#scissors-right {
+.rock-right,
+.paper-right,
+.scissors-right {
     background-size: cover;
     border-width: 0;
     margin: 5px;
@@ -114,38 +111,72 @@ button:hover{
 .rock-right {
     color: gray;
     background-color: gray;
+    background-image:url(./images/rock-right.png);
     text-align: right;
 }
 
 .paper-right {
     color: gray;
     background-color: gray;
+    background-image:url(./images/paper-right.png);
     text-align: right;
 }
 
 .scissors-right {
     color: gray;
     background-color: gray;
+    background-image:url(./images/scissors-right.png);
     text-align: right;
 }
 
-.messages{
+.img-hands{
     display: flex;
-    justify-content:center;
-    align-items: center;
-    padding: 20px 20px;
-    margin: 40px 250px;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.round-title{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.round{
     font-size: 15px;
-    gap: 60px;
+    text-align: center;
+}
+
+.result{
+    font-size: 20px;
+    color:white;
+    background-color: #ff49da;
+    font-weight: bold;
+    text-align: center;
+    padding: 6px 15px;
+    margin: 15px 0px;
+    border-width: 0px;
+    border-radius: 6px;
 }
 
 .footer{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 250px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background-color: #883ff5;
-    font-size: 13px;
     color: #f9faf8;
+    font-size: 13px;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+.avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 250px;
+    font-weight: bold;
+    padding: 30px 10px 10px 10px;
 }

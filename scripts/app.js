@@ -36,10 +36,6 @@ function playRound(roundNumber, playerSelection, computerSelection){
     let resultMessage = undefined;
     let winner = '';
 
-    let content = document.getElementById('rounds');
-    const div1 = document.createElement('div');
-    const div2 = document.createElement('div');
-
     if (playerSelection === 'rock'){
         if(computerSelection === 'paper') {
             resultMessage = 'You Lose! Paper beats Rock';
@@ -75,20 +71,35 @@ function playRound(roundNumber, playerSelection, computerSelection){
         }
     }
 
-    div1.textContent = 'Round ' + roundNumber;
-    content.appendChild(div1);
+    const content = document.getElementById('messages');
+
+    const divRound = document.createElement('div');
+    divRound.textContent = 'Round ' + roundNumber + ':';
+    divRound.className = 'round-title';
+    content.appendChild(divRound);
+
+    const divImgHands = document.createElement('div');
+    divImgHands.className = 'img-hands';
 
     const playerImg = document.createElement('img');
     playerImg.setAttribute('class', playerSelection + '-left');
-    content.appendChild(playerImg);
+    divImgHands.appendChild(playerImg);
+
+    const divResult = document.createElement('div');
+    divResult.textContent = resultMessage;
+    divResult.className = 'round';
+    divImgHands.appendChild(divResult);
 
     const computerImg = document.createElement('img');
-    computerImg.setAttribute('class', computerSelection + '-left');
-    content.appendChild(computerImg);
+    computerImg.setAttribute('class', computerSelection + '-right');
+    divImgHands.appendChild(computerImg);
+    
+    content.appendChild(divImgHands);
 
-
-    div2.textContent = resultMessage;
-    content.appendChild(div2);
+    /*const divResult = document.createElement('div');
+    divResult.textContent = resultMessage;
+    divResult.className = 'round';
+    content.appendChild(divResult);*/
     //console.log('Computer choice: ' + computerSelection + ' Your choice: ' + playerSelection + '. ' + resultMessage);
     return winner;
 }
@@ -118,17 +129,18 @@ function game(maxRounds){
             if (countRounds == maxRounds) {
                 document.body.removeEventListener('click', clickButton);
 
-                let content = document.getElementById('result')
-                const div = document.createElement('div');
+                let content = document.getElementById('messages')
+                const divResult = document.createElement('div');
+                divResult.className = 'result';
 
                 if (playerPoints > computerPoints) {
-                    div.textContent = 'YOU WIN THE ROUND! CONGRATULATIONS!';
+                    divResult.textContent = 'YOU WIN THE GAME! CONGRATULATIONS!';
                 } else if (playerPoints == computerPoints) {
-                    div.textContent = 'YOUR EVEN!';
+                    divResult.textContent = 'YOUR EVEN!';
                 } else {
-                    div.textContent = 'THE COMPUTER WINS THE ROUND!';
+                    divResult.textContent = 'THE COMPUTER WINS THE GAME!';
                 };
-                content.appendChild(div);
+                content.appendChild(divResult);
             };
         };
     });
