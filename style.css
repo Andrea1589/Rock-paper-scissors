@@ -178,5 +178,6 @@ button:hover{
     align-items: center;
     max-width: 250px;
     font-weight: bold;
+    font-size: 20px;
     padding: 30px 10px 10px 10px;
 }
