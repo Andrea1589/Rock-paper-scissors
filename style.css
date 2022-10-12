@@ -181,3 +181,24 @@ button:hover{
     font-size: 20px;
     padding: 30px 10px 10px 10px;
 }
+
+#button-rock,
+#button-paper,
+#button-scissors{
+    height: 120px;
+    width: 62px;
+    border-style: none;
+    background-color: #ff6230;
+}
+
+#button-rock{
+    background-image: url(./images/rock.png);
+}
+
+#button-paper{
+    background-image: url(./images/paper.png);
+}
+
+#button-scissors{
+    background-image: url(./images/scissors.png);
+}
