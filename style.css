@@ -196,8 +196,19 @@ button:hover{
     color: white;
     text-align: center;
     align-self: center;
-    font-weight: bolder;
+    font-weight: bold;
     border-radius: 6px;
+    opacity: 70%;
+    transition: 0.7s;
+}
+
+#button-rock:hover,
+#button-paper:hover,
+#button-scissors:hover{
+    opacity: 1;
+    height: 105px;
+    width: 65px;
+    margin: 0px;
 }
 
 #button-rock{
