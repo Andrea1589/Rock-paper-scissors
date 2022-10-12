@@ -185,10 +185,19 @@ button:hover{
 #button-rock,
 #button-paper,
 #button-scissors{
-    height: 120px;
-    width: 62px;
-    border-style: none;
     background-color: #ff6230;
+    background-size: cover;
+    margin: 5px;
+    height: 100px;
+    width: 60px;
+    border-width: 0;
+    border-style: none;
+    font-size: 0.6rem;
+    color: white;
+    text-align: center;
+    align-self: center;
+    font-weight: bolder;
+    border-radius: 6px;
 }
 
 #button-rock{
