@@ -19,13 +19,17 @@ body {
   
 .header{
     display:flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 10px 250px;
     font-size: 13px;
     background-color: #ffd000;
     color: #1b48c6;
+}
+
+h1{
+    margin: 0;
 }
 
 ul{
