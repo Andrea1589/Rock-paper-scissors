@@ -123,15 +123,26 @@ function game(maxRounds){
                 playerPoints += 1;
             } else if (result === 'computer') {
                 computerPoints += 1;
+            } else {
+                playerPoints += 0.5;
+                computerPoints += 0.5;
             }
-           
+
+            //Update player's score
+            const playerScore = document.getElementById('player-score');
+            playerScore.textContent = playerPoints;
+
+            //Update computer's score
+            const computerScore = document.getElementById('computer-score');
+            computerScore.textContent = computerPoints;
+
             //Remove event listener when reach max number of rounds
             //console.log(countRounds + '/' + maxRounds);
             if (countRounds == maxRounds) {
                 document.body.removeEventListener('click', clickButton);
 
                 const divResult = document.getElementById('round-title');
-                const divMessage =  document.getElementById('round-message');
+                const divMessage = document.getElementById('round-message');
                 const imgResult = document.getElementById('round-image');
                             
                 if (playerPoints > computerPoints) {
@@ -139,9 +150,12 @@ function game(maxRounds){
                     imgPlayerWins.style.cssText = 'background-image: url(./images/user-wins.png)';                
                     const imgComputerLose = document.getElementById('player2-image');
                     imgComputerLose.style.cssText = 'background-image: url(./images/computer-lose.png)';                
-                    imgResult.style.cssText = 'background-image: url(./images/bravo-message.png);';
+                    imgResult.style.cssText = 'background-image: url(); height: 0;';
+                    //imgResult.style.cssText = 'background-image: url(./images/bravo-message.png);';
                     divResult.textContent = 'YOU WIN THE GAME!';
                     divMessage.textContent = 'Bravo! Congratulations!';
+                    //Confetti
+                    setInterval(createSquare, 150);
                 } else if (playerPoints == computerPoints) {
                     const imgComputerMatch = document.getElementById('player2-image');
                     imgComputerMatch.style.cssText = 'background-image: url(./images/computer-match.png)';                
@@ -151,7 +165,8 @@ function game(maxRounds){
                 } else {
                     const imgComputerWins = document.getElementById('player2-image');
                     imgComputerWins.style.cssText = 'background-image: url(./images/computer-wins.png)';                
-                    imgResult.style.cssText = 'background-image: url(./images/bravo-message.png); background-color: #9f9f9f;';
+                    imgResult.style.cssText = 'background-image: url(); height: 0;';
+                    //imgResult.style.cssText = 'background-image: url(./images/bravo-message.png); background-color: #9f9f9f;';
                     divResult.textContent = 'THE COMPUTER WINS THE GAME!';
                     divMessage.textContent = 'Try again';
                 };
@@ -161,3 +176,32 @@ function game(maxRounds){
         };
     });
 }
+
+const color = [
+    '2196f3',
+    'e91e63',
+    'ffeb3b',
+    '74ff1d'
+]
+
+function createSquare(){
+    const section = document.querySelector('player1-image');
+    const square = document.createElement('span');
+    var size = Math.random() * 50;
+
+    square.style.width = 20 + size + 'px';
+    square.style.height = 20 + size + 'px';
+
+    square.style.top = Math.random() * innerHeight + 'px';
+    square.style.left = Math.random() * innerHeight + 'px';
+
+    const bg = colors [Math.floor(Math.random() * color.length)];
+    square.style.background = bg;
+
+    section.appendChild(square);
+
+    setTimeout(() => {
+        square.remove()
+    },5000);
+}
+

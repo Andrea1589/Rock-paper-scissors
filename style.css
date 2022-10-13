@@ -171,6 +171,7 @@ a:hover{
     text-align: center;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
 }
 
 #player-score,
@@ -181,7 +182,7 @@ a:hover{
     align-items: center;
     justify-content: center;
     border-style: solid;
-    border-width: 0;
+    border-width: 2px;
     margin: 5px 100px 0 100px;
     color: white;
     border-radius: 6px;
@@ -191,10 +192,12 @@ a:hover{
 
 #player-score {
     background-color:#ff6230;
+    border-color: #e4572d;
 }
 
 #computer-score {
     background-color:#9f9f9f;
+    border-color:#888888;
 }
 
 .player-buttons{
@@ -224,4 +227,32 @@ a:hover{
     color:#9f9f9f;
     background-image: url('./images/computer.png');
     background-size: 290px;
+}
+
+span {
+    position: absolute;
+    pointer-events: none;
+    background: #fff;
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0%
+    {
+        transform: scale(0) translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10%
+    {
+        opacity: 1;
+    }
+    90%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        transform: scale(1) translateY(-500%) rotate(360deg);
+        opacity: 0;
+    }
 }
