@@ -7,14 +7,13 @@ html{
     box-sizing: inherit;
 }
 
-
 body {   
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     margin: 0;
     overflow: hidden;
     font-family: Roboto, sans-serif;
-    display: flex;
-    flex-direction: column;
     overflow-y: auto;
   }
   
@@ -25,8 +24,8 @@ body {
     align-items: center;
     padding: 10px 250px;
     font-size: 13px;
-    background-color: #ffdc00;
-    color: #883ff5;
+    background-color: #ffd000;
+    color: #1b48c6;
 }
 
 ul{
@@ -39,103 +38,28 @@ ul{
 
 a{
     text-decoration: none;
-    color: #ff49da;
+    color: #1b48c6;
     padding: 5px 15px;
     border-radius: 6px;
 }
 
 a:hover{
-    background: #ff49da;
-    color: #ffdc00;
+    background: #21cfcb;
+    color: #1b48c6;
 }
 
-.game{
+.container{
     display: flex;
-    align-items:flex-start;
-    justify-content:center;
-    padding: 10px 250px 10px 250px;
-    color: black;
-    
-}
-
-#messages{
+    padding: 35px 250px 35px 250px;
+    align-items:center;
     width: 100%;
-    max-width: 400px;
-    padding: 30px 50px;
+    justify-content:space-evenly;
     color: black;
-    
+    font-size: 1.2em;
 }
 
-.rock-left,
-.paper-left,
-.scissors-left,
-.rock-right,
-.paper-right,
-.scissors-right {
-    background-size: cover;
-    border-width: 0;
-    margin: 5px;
-    height: 50px;
-    width: 130px;
-    font-size: 1.5rem;
-    align-self: center;
-    font-weight: bolder;
-    border-radius: 6px;
-}
 
-button:hover{
-    opacity: 1;
-}
-
-.rock-left {
-    color: #ffdc00;
-    background-color: #ffdc00;
-    background-image:url(./images/rock-left.png);
-    text-align: left;
-}
-
-.paper-left {
-    color: #883ff5;
-    background-color: #883ff5;
-    background-image:url(./images/paper-left.png);
-    text-align: left;
-}
-
-.scissors-left {
-    color: #ff49da;
-    background-color: #ff49da;
-    background-image:url(./images/scissors-left.png);
-    text-align: left;
-}
-
-.rock-right {
-    color: gray;
-    background-color: gray;
-    background-image:url(./images/rock-right.png);
-    text-align: right;
-}
-
-.paper-right {
-    color: gray;
-    background-color: gray;
-    background-image:url(./images/paper-right.png);
-    text-align: right;
-}
-
-.scissors-right {
-    color: gray;
-    background-color: gray;
-    background-image:url(./images/scissors-right.png);
-    text-align: right;
-}
-
-.img-hands{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.round-title{
+#round-title{
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 3px;
@@ -143,8 +67,8 @@ button:hover{
     text-align: center;
 }
 
-.round{
-    font-size: 15px;
+#round-message{
+    font-size: 16px;
     text-align: center;
 }
 
@@ -165,21 +89,11 @@ button:hover{
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #883ff5;
-    color: #f9faf8;
+    background-color:#9f9f9f;
+    color: #1b48c6;
     font-size: 13px;
     text-align: center;
     padding: 15px 0px;
-}
-
-.avatar{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 250px;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 30px 10px 10px 10px;
 }
 
 #button-rock,
@@ -192,7 +106,7 @@ button:hover{
     width: 60px;
     border-width: 0;
     border-style: none;
-    font-size: 0.6rem;
+    font-size: 0;
     color: white;
     text-align: center;
     align-self: center;
@@ -221,4 +135,64 @@ button:hover{
 
 #button-scissors{
     background-image: url(./images/scissors.png);
+}
+
+#round-image {
+    background-image: url('./images/good-luck-message.png');
+    background-color: #ff6230;
+    background-size: cover;
+    border-width: 0;
+    border-style: none;
+    margin: 5px;
+    height: 100px;
+    width: 400px;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    border-radius: 6px;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px;
+    max-height: 400px;
+    height: 350px;
+    margin-bottom: 100px;
+}
+
+.player-name {
+    text-align: center;
+    font-size: 16px;
+}
+
+.player-buttons{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#player1-image,
+#player2-image {
+    border-style:dashed;
+    border-width: 5px;
+    border-radius: 200px;
+    width: 300px;
+    height: 300px;
+    align-self: center;  
+    margin: 20px 0 5px 0;  
+}
+
+#player1-image{
+    color: #ff6230;
+    background-image: url('./images/user.png');
+    background-size: 290px;
+}
+
+#player2-image{
+    color:#9f9f9f;
+    background-image: url('./images/computer.png');
+    background-size: 290px;
 }

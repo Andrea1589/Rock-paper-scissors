@@ -1,11 +1,11 @@
 //Start playing
-    game(5);
+game(5);
 
 //The participant choose one option (rock, paper or scissors) secretly
 function getComputerChoice(){
     let cChoice = undefined;
     let numChoice = getRandomInt(3);
-    //console.log(numChoice);
+
     switch(numChoice){
         case 0: 
             cChoice = 'rock';
@@ -18,7 +18,6 @@ function getComputerChoice(){
             break;
     }
 
-    //console.log(img);
     return cChoice;
 }
 
@@ -35,72 +34,75 @@ function getRandomInt(max){
 function playRound(roundNumber, playerSelection, computerSelection){
     let resultMessage = undefined;
     let winner = '';
+    let roundImage = '';
 
     if (playerSelection === 'rock'){
         if(computerSelection === 'paper') {
-            resultMessage = 'You Lose! Paper beats Rock';
+            resultMessage = 'You lose this one!';
+            roundImage = 'computer-paper-wraps-rock';
             winner = 'computer';
         } else if (computerSelection === 'scissors') {
-            resultMessage = 'You Win! Rock beats Scissors';
+            resultMessage = 'You win this one!';
+            roundImage = 'player-rock-blunts-scissors';
             winner = 'player';
         } else {
-            resultMessage = 'Your Even! Both chose Rock';
+            resultMessage = 'Evenly matched!';
+            roundImage = 'even-rock-equals-rock';
             winner = 'even';
         }
     } else if (playerSelection === 'paper'){
         if(computerSelection === 'rock') {
-            resultMessage = 'You Win! Paper beats Rock';
+            resultMessage = 'You win this one!';
+            roundImage = 'player-paper-wraps-rock';
             winner = 'player';
         } else if (computerSelection === 'scissors') {
-            resultMessage = 'You Lose! Scissors beat Paper';
+            resultMessage = 'You lose this one!';
+            roundImage = 'computer-scissors-cuts-paper';
             winner = 'computer';
         } else {
-            resultMessage = 'Your Even! Both chose Paper';
+            resultMessage = 'Evenly matched!';
+            roundImage = 'even-paper-equals-paper';
             winner = 'even';
         }
     } else {
         if(computerSelection === 'rock') {
-            resultMessage = 'You Lose! Rock beats Scissors';
+            resultMessage = 'You lose this one!';
+            roundImage = 'computer-rock-blunts-scissors';
             winner = 'computer';
         } else if (computerSelection === 'paper') {
-            resultMessage = 'You Win! Scissors beat Paper';
+            resultMessage = 'You win this one!';
+            roundImage = 'player-scissors-cuts-paper';
             winner = 'player';
         } else {
-            resultMessage = 'Your Even! Both chose Scissors';
+            resultMessage = 'Evenly matched!';
+            roundImage = 'even-scissors-equals-scissors';
             winner = 'even';
         }
     }
 
-    const content = document.getElementById('messages');
+    const content = document.getElementById('game');
 
-    const divRound = document.createElement('div');
+    const divRound =  document.getElementById('round-title');
     divRound.textContent = 'Round ' + roundNumber + ':';
-    divRound.className = 'round-title';
-    content.appendChild(divRound);
 
-    const divImgHands = document.createElement('div');
-    divImgHands.className = 'img-hands';
-
-    const playerImg = document.createElement('img');
-    playerImg.setAttribute('class', playerSelection + '-left');
-    divImgHands.appendChild(playerImg);
-
-    const divResult = document.createElement('div');
+    const divResult = document.getElementById('round-message');
     divResult.textContent = resultMessage;
-    divResult.className = 'round';
-    divImgHands.appendChild(divResult);
 
-    const computerImg = document.createElement('img');
+    const divImgHands = document.getElementById('round-image');
+    divImgHands.style.cssText = 'background-image: url(./images/' + roundImage + '.png)';
+
+
+    /*const computerImg = document.createElement('img');
     computerImg.setAttribute('class', computerSelection + '-right');
-    divImgHands.appendChild(computerImg);
+    divImgHands.appendChild(computerImg);*/
     
-    content.appendChild(divImgHands);
+    //content.appendChild(divImgHands);
 
+    console.log(roundImage);
     /*const divResult = document.createElement('div');
     divResult.textContent = resultMessage;
     divResult.className = 'round';
     content.appendChild(divResult);*/
-    //console.log('Computer choice: ' + computerSelection + ' Your choice: ' + playerSelection + '. ' + resultMessage);
     return winner;
 }
 
@@ -115,7 +117,6 @@ function game(maxRounds){
         if (event.target.nodeName == 'BUTTON') {
             countRounds += 1;
             playerChoice = event.target.textContent.toLowerCase();
-            //console.log('Choice: ' + playerChoice);
             let result = playRound(countRounds, playerChoice, getComputerChoice());
 
             //Sum points
@@ -126,21 +127,31 @@ function game(maxRounds){
             }
            
             //Remove event listener when reach max number of rounds
+            console.log(countRounds + '/' + maxRounds);
             if (countRounds == maxRounds) {
                 document.body.removeEventListener('click', clickButton);
 
-                let content = document.getElementById('messages')
-                const divResult = document.createElement('div');
-                divResult.className = 'result';
+                const divRound =  document.getElementById('round-title');
+                divRound.textContent = 'Final Result:';
 
+                const divResult = document.getElementById('round-message');
+                            
                 if (playerPoints > computerPoints) {
+                    const imgPlayerWins = document.getElementById('player1-image');
+                    imgPlayerWins.style.cssText = 'background-image: url(./images/user-wins.png)';                
+                    const imgComputerLose = document.getElementById('player2-image');
+                    imgComputerLose.style.cssText = 'background-image: url(./images/computer-lose.png)';                
                     divResult.textContent = 'YOU WIN THE GAME! CONGRATULATIONS!';
                 } else if (playerPoints == computerPoints) {
+                    const imgComputerMatch = document.getElementById('player2-image');
+                    imgComputerMatch.style.cssText = 'background-image: url(./images/computer-match.png)';                
                     divResult.textContent = 'YOUR EVEN!';
                 } else {
+                    const imgComputerWins = document.getElementById('player2-image');
+                    imgComputerWins.style.cssText = 'background-image: url(./images/computer-wins.png)';                
                     divResult.textContent = 'THE COMPUTER WINS THE GAME!';
                 };
-                content.appendChild(divResult);
+                //content.appendChild(divResult);
             };
         };
     });
