@@ -83,13 +83,13 @@ function playRound(roundNumber, playerSelection, computerSelection){
     const content = document.getElementById('game');
 
     const divRound =  document.getElementById('round-title');
-    divRound.textContent = 'Round ' + roundNumber + ':';
+    divRound.textContent = 'ROUND ' + roundNumber;
 
     const divResult = document.getElementById('round-message');
     divResult.textContent = resultMessage;
 
-    const divImgHands = document.getElementById('round-image');
-    divImgHands.style.cssText = 'background-image: url(./images/' + roundImage + '.png)';
+    const divImgGame = document.getElementById('round-image');
+    divImgGame.style.cssText = 'background-image: url(./images/' + roundImage + '.png)';
 
 
     /*const computerImg = document.createElement('img');
@@ -98,7 +98,6 @@ function playRound(roundNumber, playerSelection, computerSelection){
     
     //content.appendChild(divImgHands);
 
-    console.log(roundImage);
     /*const divResult = document.createElement('div');
     divResult.textContent = resultMessage;
     divResult.className = 'round';
@@ -117,7 +116,7 @@ function game(maxRounds){
         if (event.target.nodeName == 'BUTTON') {
             countRounds += 1;
             playerChoice = event.target.textContent.toLowerCase();
-            let result = playRound(countRounds, playerChoice, getComputerChoice());
+            let result = playRound(countRounds + ' OF ' + maxRounds, playerChoice, getComputerChoice());
 
             //Sum points
             if (result === 'player') {
@@ -127,30 +126,36 @@ function game(maxRounds){
             }
            
             //Remove event listener when reach max number of rounds
-            console.log(countRounds + '/' + maxRounds);
+            //console.log(countRounds + '/' + maxRounds);
             if (countRounds == maxRounds) {
                 document.body.removeEventListener('click', clickButton);
 
-                const divRound =  document.getElementById('round-title');
-                divRound.textContent = 'Final Result:';
-
-                const divResult = document.getElementById('round-message');
+                const divResult = document.getElementById('round-title');
+                const divMessage =  document.getElementById('round-message');
+                const imgResult = document.getElementById('round-image');
                             
                 if (playerPoints > computerPoints) {
                     const imgPlayerWins = document.getElementById('player1-image');
                     imgPlayerWins.style.cssText = 'background-image: url(./images/user-wins.png)';                
                     const imgComputerLose = document.getElementById('player2-image');
                     imgComputerLose.style.cssText = 'background-image: url(./images/computer-lose.png)';                
-                    divResult.textContent = 'YOU WIN THE GAME! CONGRATULATIONS!';
+                    imgResult.style.cssText = 'background-image: url(./images/bravo-message.png);';
+                    divResult.textContent = 'YOU WIN THE GAME!';
+                    divMessage.textContent = 'Bravo! Congratulations!';
                 } else if (playerPoints == computerPoints) {
                     const imgComputerMatch = document.getElementById('player2-image');
                     imgComputerMatch.style.cssText = 'background-image: url(./images/computer-match.png)';                
+                    imgResult.style.cssText = 'background-image: url(); height: 0;';
                     divResult.textContent = 'YOUR EVEN!';
+                    divMessage.textContent = 'Try again';
                 } else {
                     const imgComputerWins = document.getElementById('player2-image');
                     imgComputerWins.style.cssText = 'background-image: url(./images/computer-wins.png)';                
+                    imgResult.style.cssText = 'background-image: url(./images/bravo-message.png); background-color: #9f9f9f;';
                     divResult.textContent = 'THE COMPUTER WINS THE GAME!';
+                    divMessage.textContent = 'Try again';
                 };
+
                 //content.appendChild(divResult);
             };
         };
