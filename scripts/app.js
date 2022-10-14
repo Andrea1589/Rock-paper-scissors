@@ -1,5 +1,4 @@
-//Start playing
-game(5);
+initializeGame(5);
 
 //The participant choose one option (rock, paper or scissors) secretly
 function getComputerChoice(){
@@ -82,15 +81,25 @@ function playRound(roundNumber, playerSelection, computerSelection){
 
     const content = document.getElementById('game');
 
-    const divRound =  document.getElementById('round-title');
-    divRound.textContent = 'ROUND ' + roundNumber;
+    //Remove initial message
 
-    const divResult = document.getElementById('round-message');
-    divResult.textContent = resultMessage;
+    //Add round titles
+    //const divRound =  document.getElementById('round-title');
+    const divRound =  document.createElement('div');
+    divRound.className = 'round-message';
+    divRound.innerHTML = '<strong>ROUND ' + roundNumber + ': </strong>' + resultMessage;
+    content.appendChild(divRound);
+    //Add round messages
+    //const divResult = document.getElementById('round-message');
+    //const roundMessage =  document.createElement('div');
+    //roundMessage.id = 'round-message';
+    //roundMessage.textContent = resultMessage;
+    //content.appendChild(roundMessage);
+
+    //content.appendChild(document.createElement('br'));
 
     const divImgGame = document.getElementById('round-image');
     divImgGame.style.cssText = 'background-image: url(./images/' + roundImage + '.png)';
-
 
     /*const computerImg = document.createElement('img');
     computerImg.setAttribute('class', computerSelection + '-right');
@@ -112,68 +121,89 @@ function game(maxRounds){
     let computerPoints = 0;
 
     //Add event listener on button options
-    document.body.addEventListener('click', function clickButton(event) {
-        if (event.target.nodeName == 'BUTTON') {
-            countRounds += 1;
-            playerChoice = event.target.textContent.toLowerCase();
-            let result = playRound(countRounds + ' OF ' + maxRounds, playerChoice, getComputerChoice());
+    //document.body.addEventListener('click', function clickButton(event) {
+    document.querySelectorAll('.player-buttons').forEach(item => {
+        item.addEventListener('click', function clickPlayerOption (event) {
+            //if (event.target.nodeName == 'BUTTON') {
+                countRounds += 1;
+                playerChoice = event.target.textContent.toLowerCase();
+                let result = playRound(countRounds + '/' + maxRounds, playerChoice, getComputerChoice());
 
-            //Sum points
-            if (result === 'player') {
-                playerPoints += 1;
-            } else if (result === 'computer') {
-                computerPoints += 1;
-            } else {
-                playerPoints += 0.5;
-                computerPoints += 0.5;
-            }
-
-            //Update player's score
-            const playerScore = document.getElementById('player-score');
-            playerScore.textContent = playerPoints;
-
-            //Update computer's score
-            const computerScore = document.getElementById('computer-score');
-            computerScore.textContent = computerPoints;
-
-            //Remove event listener when reach max number of rounds
-            //console.log(countRounds + '/' + maxRounds);
-            if (countRounds == maxRounds) {
-                document.body.removeEventListener('click', clickButton);
-
-                const divResult = document.getElementById('round-title');
-                const divMessage = document.getElementById('round-message');
-                const imgResult = document.getElementById('round-image');
-                            
-                if (playerPoints > computerPoints) {
-                    const imgPlayerWins = document.getElementById('player1-image');
-                    imgPlayerWins.style.cssText = 'background-image: url(./images/user-wins.png)';                
-                    const imgComputerLose = document.getElementById('player2-image');
-                    imgComputerLose.style.cssText = 'background-image: url(./images/computer-lose.png)';                
-                    imgResult.style.cssText = 'background-image: url(); height: 0;';
-                    //imgResult.style.cssText = 'background-image: url(./images/bravo-message.png);';
-                    divResult.textContent = 'YOU WIN THE GAME!';
-                    divMessage.textContent = 'Bravo! Congratulations!';
-                    //Confetti
-                    setInterval(createSquare, 150);
-                } else if (playerPoints == computerPoints) {
-                    const imgComputerMatch = document.getElementById('player2-image');
-                    imgComputerMatch.style.cssText = 'background-image: url(./images/computer-match.png)';                
-                    imgResult.style.cssText = 'background-image: url(); height: 0;';
-                    divResult.textContent = 'YOUR EVEN!';
-                    divMessage.textContent = 'Try again';
+                //Clear initial message
+                if (countRounds === 1) {
+                    const divMessages = document.getElementById('initial-message');
+                    divMessages.textContent = '';
+                }
+                //Sum points
+                if (result === 'player') {
+                    playerPoints += 1;
+                } else if (result === 'computer') {
+                    computerPoints += 1;
                 } else {
-                    const imgComputerWins = document.getElementById('player2-image');
-                    imgComputerWins.style.cssText = 'background-image: url(./images/computer-wins.png)';                
-                    imgResult.style.cssText = 'background-image: url(); height: 0;';
-                    //imgResult.style.cssText = 'background-image: url(./images/bravo-message.png); background-color: #9f9f9f;';
-                    divResult.textContent = 'THE COMPUTER WINS THE GAME!';
-                    divMessage.textContent = 'Try again';
-                };
+                    playerPoints += 0.5;
+                    computerPoints += 0.5;
+                }
 
-                //content.appendChild(divResult);
-            };
-        };
+                //Update player's score
+                const playerScore = document.getElementById('player-score');
+                playerScore.textContent = playerPoints;
+
+                //Update computer's score
+                const computerScore = document.getElementById('computer-score');
+                computerScore.textContent = computerPoints;
+
+                //Remove event listener when reach max number of rounds
+                //console.log(countRounds + '/' + maxRounds);
+                if (countRounds == maxRounds) {
+
+                    document.querySelectorAll('.player-buttons').forEach(item => {
+                        item.removeEventListener('click', clickPlayerOption);
+                    });
+
+                    //const divResult = document.getElementById('round-title');
+                    //const divMessage = document.getElementById('round-message');
+
+                    const content = document.getElementById('game');
+                    //const imgResult = document.getElementById('round-image');
+                    const divFinalResult = document.createElement('div');
+
+                    const buttonPlayAgain = document.createElement('button');
+                    buttonPlayAgain.class = 'play-again';
+                    buttonPlayAgain.addEventListener ('click', () =>{
+                        initializeGame(maxRounds);
+                    });
+                        
+                    if (playerPoints > computerPoints) {
+                        const imgPlayerWins = document.getElementById('player1-image');
+                        imgPlayerWins.style.cssText = 'background-image: url(./images/user-wins.png)';                
+                        const imgComputerLose = document.getElementById('player2-image');
+                        imgComputerLose.style.cssText = 'background-image: url(./images/computer-lose.png)';                
+                        //imgResult.style.cssText = 'background-image: url(); height: 0;';
+                        //imgResult.style.cssText = 'background-image: url(./images/bravo-message.png);';
+                        divFinalResult.textContent = 'YOU WIN THE GAME! Congratulations!';
+                        buttonPlayAgain.textContent = 'Play Again';
+                        //Confetti
+                        setInterval(createSquare, 150);
+                    } else if (playerPoints == computerPoints) {
+                        const imgComputerMatch = document.getElementById('player2-image');
+                        imgComputerMatch.style.cssText = 'background-image: url(./images/computer-match.png)';                
+                        //imgResult.style.cssText = 'background-image: url(); height: 0;';
+                        divFinalResult.textContent = 'YOUR EVEN!';
+                        buttonPlayAgain.textContent = 'Try Again';
+                    } else {
+                        const imgComputerWins = document.getElementById('player2-image');
+                        imgComputerWins.style.cssText = 'background-image: url(./images/computer-wins.png)';                
+                        //imgResult.style.cssText = 'background-image: url(); height: 0;';
+                        //imgResult.style.cssText = 'background-image: url(./images/bravo-message.png); background-color: #9f9f9f;';
+                        divFinalResult.textContent = 'THE COMPUTER WINS THE GAME!';
+                        buttonPlayAgain.textContent = 'Try Again';
+                    };
+
+                    content.appendChild(divFinalResult);
+                    content.appendChild(buttonPlayAgain);
+                };
+            //};
+        });
     });
 }
 
@@ -205,3 +235,33 @@ function createSquare(){
     },5000);
 }
 
+function initializeGame(maxRounds){
+            //Initialize initial message
+            const divMessages = document.getElementById('game');
+            divMessages.textContent = '';
+
+            const divInitialMessage =  document.createElement('div');
+            divInitialMessage.id = 'initial-message';
+            divInitialMessage.innerHTML = '<strong>LETS PLAY!</strong><br>Choose on of the options bellow your player. You have ' + maxRounds + ' rounds to win.';
+            divMessages.appendChild(divInitialMessage);
+        
+            //Initialize scores
+            const playerScore = document.getElementById('player-score');
+            playerScore.textContent = 0;
+
+            const computerScore = document.getElementById('computer-score');
+            computerScore.textContent = 0;
+
+            //Initialize images
+            const imgPlayerWins = document.getElementById('player1-image');
+            imgPlayerWins.style.cssText = 'background-image: url(./images/user.png)';                
+
+            const imgComputerLose = document.getElementById('player2-image');
+            imgComputerLose.style.cssText = 'background-image: url(./images/computer.png)';                
+
+            const divImgGame = document.getElementById('round-image');
+            divImgGame.style.cssText = 'background-image: url(./images/good-luck-message.png)';
+
+            //Play
+            game(maxRounds);
+}

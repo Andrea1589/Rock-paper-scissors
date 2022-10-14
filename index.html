@@ -10,36 +10,41 @@
 <body>
     <div class="header">
         <img src="./images/rock-paper-scissors-logo.png" height="70px">
-        <h1>Rock, Paper Scissors!</h1>
+        <h1>Rock, Paper, Scissors!</h1>
     </div>
     <div class="container">
-        <div class="player-info">
-            <div class="player-name">You</div>
-            <div id="player-score">0</div>
-            <img id="player1-image">
+        <div class="section-1">
+            <div class="player-info">
+                <div class="player-name">You</div>
+                <div id="player-score">0</div>
+                <img id="player1-image">
+            </div>
+            <div id="game">
+                <div id = "initial-message">LETS PLAY!<br>Choose one option bellow your player.<br>You have 5 rounds to win.</div>
+                <!--Here the DOM is going to add div tags for rounds and results-->
+            </div>
+            <div class="player-info">
+                <div class="player-name">Computer</div>
+                <div id="computer-score">0</div>
+                <img id="player2-image">
+            </div>
+        </div>
+        <div class="section-2">
             <div class="player-buttons">
                 <button id="button-rock">ROCK</button>
                 <button id="button-paper">PAPER</button>
                 <button id="button-scissors">SCISSORS</button>
             </div>        
-        </div>
-        <div class="game">
-            <!--Here the DOM is going to add div tags for rounds and results-->
-            <div id="round-title">LETS PLAY!</div>
-            <div id="round-message">Choose one option bellow your player.<br>You have 5 rounds to win.</div>
-            <img id="round-image">
-        </div>
-        <div class="player-info">
-            <div class="player-name">Computer</div>
-            <div id="computer-score">0</div>
-            <img id="player2-image">
-            <div class="player-buttons">
+            <div class="game">
+                <img id="round-image">
+            </div>
+            <div class="computer-buttons">
                 <button id="button-rock">ROCK</button>
                 <button id="button-paper">PAPER</button>
                 <button id="button-scissors">SCISSORS</button>
             </div>        
         </div>
-</div>
+    </div>
     <div class="footer">Copyright &copy; AndreaECS 2022</div>
     <script src="./scripts/app.js"></script>
 </body>
