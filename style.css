@@ -34,22 +34,16 @@ h1{
 
 ul{
     display: flex;
-    list-style: none;
+    list-style: square;
+    flex-direction: column;
     margin: 0;
     padding: 0;
-    gap: 16px;
+    gap: 10px;
+    font-size: 14px;
 }
 
-a{
-    text-decoration: none;
-    color: #1b48c6;
-    padding: 5px 15px;
-    border-radius: 6px;
-}
-
-a:hover{
-    background: #21cfcb;
-    color: #1b48c6;
+li{
+    text-align: left;
 }
 
 .container {
@@ -61,9 +55,9 @@ a:hover{
 .section-1{
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     padding-left: 250px;
     padding-right: 250px;
-    align-items:center;
     justify-content:space-around;
     color: #2a2829;
     font-size: 16px;
@@ -74,34 +68,13 @@ a:hover{
     flex-direction: row;
     padding-left: 250px;
     padding-right: 250px;
-    align-items:center;
-    justify-content:center;
+    justify-content:space-around;
     color: #2a2829;
     font-size: 16px;
 }
 
-#round-title{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-weight: bold;
-    text-align: center;
-}
-
-#round-message{
-    text-align: center;
-    margin: 10px 0;
-}
-
-.result{
-    font-size: 20px;
-    color:white;
-    background-color: #ff49da;
-    font-weight: bold;
-    text-align: center;
-    padding: 6px 15px;
-    margin: 15px 0px;
-    border-width: 0px;
-    border-radius: 6px;
+.round-message{
+    padding: 5px 0px;
 }
 
 .footer{
@@ -116,12 +89,13 @@ a:hover{
     padding: 15px 0px;
 }
 
-#button-rock,
-#button-paper,
-#button-scissors{
-    background-color: #ff6230;
+#button-player-rock,
+#button-player-paper,
+#button-player-scissors,
+#button-computer-rock,
+#button-computer-paper,
+#button-computer-scissors{
     background-size: cover;
-    margin: 5px;
     height: 100px;
     width: 60px;
     border-width: 0;
@@ -132,28 +106,41 @@ a:hover{
     align-self: center;
     font-weight: bold;
     border-radius: 6px;
-    opacity: 70%;
     transition: 0.7s;
 }
 
-#button-rock:hover,
-#button-paper:hover,
-#button-scissors:hover{
-    opacity: 1;
-    height: 105px;
-    width: 65px;
-    margin: 0px;
+#button-player-rock,
+#button-player-paper,
+#button-player-scissors{
+    background-color: #ff6230;
+    cursor: pointer;
 }
 
-#button-rock{
+#button-player-rock:hover,
+#button-player-paper:hover,
+#button-player-scissors:hover
+{
+    opacity: 1;
+}
+
+#button-computer-rock,
+#button-computer-paper,
+#button-computer-scissors{
+    background-color: #9f9f9f;
+}
+
+#button-player-rock,
+#button-computer-rock{
     background-image: url(./images/rock.png);
 }
 
-#button-paper{
+#button-player-paper,
+#button-computer-paper{
     background-image: url(./images/paper.png);
 }
 
-#button-scissors{
+#button-player-scissors,
+#button-computer-scissors{
     background-image: url(./images/scissors.png);
 }
 
@@ -173,11 +160,11 @@ a:hover{
     vertical-align: middle;
 }
 
-.game {
+#game {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 0 40px;
+    margin: 30px 50px;
+    width: 450px;
 }
 
 .player-name {
@@ -186,37 +173,37 @@ a:hover{
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    font-size: 20px;
+}
+
+.final-result {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0;
+    color: #ff6230;
+    font-size: 20px;
 }
 
 #player-score,
 #computer-score {
-    display: flex;
-    flex-direction: row;
     text-align: center;
-    align-items: center;
-    justify-content: center;
     border-style: solid;
     border-width: 2px;
-    margin: 5px 100px 0 100px;
     color: white;
     font-size: 35px;
     font-weight: bold;
-}
-
-#player-score {
-    background-color:#ff6230;
-    border-color: #e4572d;
-}
-
-#computer-score {
-    background-color:#9f9f9f;
-    border-color:#888888;
+    background-color:#2a2829;
+    border-radius: 6px;
+    margin: 0 80px;
+    padding: 10px 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .player-buttons,
 .computer-buttons{
     display: flex;
     justify-content: center;
+    gap: 15px;
 }
 
 #player1-image,
@@ -224,8 +211,8 @@ a:hover{
     border-style:dashed;
     border-width: 5px;
     border-radius: 200px;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     align-self: center;  
     margin: 20px 0 5px 0;  
 }
@@ -233,13 +220,27 @@ a:hover{
 #player1-image{
     color: #ff6230;
     background-image: url('./images/user.png');
-    background-size: 290px;
+    background-size: 240px;
 }
 
 #player2-image{
     color:#9f9f9f;
     background-image: url('./images/computer.png');
-    background-size: 290px;
+    background-size: 240px;
+}
+
+.play-again {
+    background-color:#ff6230;
+    margin: 15px;
+    padding: 10px 20px;
+    border-width: 0;
+    border-style: none;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    align-self: center;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 span {
@@ -249,23 +250,29 @@ span {
     animation: animate 5s linear infinite;
 }
 
-@keyframes animate {
-    0%
-    {
-        transform: scale(0) translateY(0) rotate(0deg);
-        opacity: 0;
-    }
-    10%
-    {
-        opacity: 1;
-    }
-    90%
-    {
-        opacity: 1;
-    }
-    100%
-    {
-        transform: scale(1) translateY(-500%) rotate(360deg);
-        opacity: 0;
-    }
+#initial-message {
+    text-align: center;
+}
+
+table{
+    border-collapse: collapse;
+    border: 1px solid #9f9f9f;
+}
+
+th,td {
+    padding: 3px;
+    font-size: 14px;
+}
+
+thead {
+    background-color: #9f9f9f;
+    color: white;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #eee;
 }
