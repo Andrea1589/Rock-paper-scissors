@@ -146,9 +146,15 @@ function playRound(roundNumber, playerSelection, computerSelection){
     const tbodyResult = document.querySelector('tbody');
     const tbodyTr = document.createElement('tr');
     for (let i = 0; i < bodyArray.length; i++){
-        const td = document.createElement('td');
-        td.appendChild(document.createTextNode(bodyArray[i]));
-        tbodyTr.appendChild(td);
+        if (i == 0) {
+            const thBody = document.createElement('th');
+            thBody.appendChild(document.createTextNode(bodyArray[i]));
+            tbodyTr.appendChild(thBody);
+        } else {
+            const td = document.createElement('td');
+            td.appendChild(document.createTextNode(bodyArray[i]));
+            tbodyTr.appendChild(td);
+        }
         tbodyResult.appendChild(tbodyTr);
     }
     //table.appendChild(tbody);

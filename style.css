@@ -215,6 +215,7 @@ li{
     height: 250px;
     align-self: center;  
     margin: 20px 0 5px 0;  
+    transition: 0.3s;
 }
 
 #player1-image{
@@ -275,4 +276,10 @@ tbody tr:nth-child(odd) {
 
 tbody tr:nth-child(even) {
     background-color: #eee;
+}
+
+tbody th {
+    background-color: #9f9f9f;
+    color: #2a2829;
+    text-align: center;
 }
