@@ -56,8 +56,8 @@ li{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding-left: 250px;
-    padding-right: 250px;
+    padding-left: 150px;
+    padding-right: 150px;
     justify-content:space-around;
     color: #2a2829;
     font-size: 16px;
@@ -66,23 +66,22 @@ li{
 .section-2{
     display: flex;
     flex-direction: row;
-    padding-left: 250px;
-    padding-right: 250px;
+    padding-left: 150px;
+    padding-right: 150px;
     justify-content:space-around;
     color: #2a2829;
     font-size: 16px;
 }
+
 
 .round-message{
     padding: 5px 0px;
 }
 
 .footer{
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color:#9f9f9f;
     color: #1b48c6;
     font-size: 13px;
     text-align: center;
